@@ -1,16 +1,26 @@
-public class Main
-{
-    public static void main(String[] args){
-        Car c1 = new Car(0);
-        Car c2 = new Car(0);
-        Car c3 = new Car(0);
+public class Main {
+    public static void main(String[] args) {
+        Car c1 = new Car("Ферарри");
+        Car c2 = new Car("Форд");
+        System.out.println("Гонка выносливости Ле-Ман");
+        System.out.println("участвует Форд против Феррари");
+        for (int i = 3; i >= 0; i--) {
+            System.out.println(i);
+        }
+        System.out.println("CТАРТ!");
 
-        c1.speedUp();
-        c2.speedUp();
-        c3.speedUp();
+        while (true) {
+            for (int i = 0; i < 100; i++) {
+                c1.speedUp();
+                c2.speedUp();
+            }
 
-        c1.printSpeed();
-        c2.printSpeed();
-        c3.printSpeed();
+            while (true) {
+                c1.step();
+                c2.step();
+            }
+
+        }
+
     }
 }

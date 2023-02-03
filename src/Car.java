@@ -1,2 +1,57 @@
-package PACKAGE_NAME;public class Car {
+import java.util.Random;
+
+public class Car {
+    private String name;
+    private int speed;
+    private int time;
+    private int distance;
+    private Random r = new Random();
+    private Weel[] weels = new Weel[4];
+
+    public Car(String name) {
+        this.name = name;
+
+        for(int i = 0; i < 4; i++)
+            weels[i] = new Weel(16, 2.5);
+    }
+    public void speedUp() {
+        speed += 10;
+    }
+    public void speedDown() {
+        speed -= 10;
+    }
+    public void printSpeed() {
+        System.out.println(speed);
+    }
+    public void step() {
+        for(int i = 0; i < 4; i++) {
+            weels[i].changePress(r.nextDouble()/100);
+            //System.out.println("Колесо №" + (i + 1));
+            //weels[i].printPress();
+        }
+        distance += speed;
+        time++;
+        System.out.println("Время " + time + " машина " + name + " пройдено " + distance);
+    }
 }
+class Weel {
+    private double dia;
+    private double press;
+    public Weel(double d, double p) {
+        this.dia = d;
+        this.press = p;
+    }
+    public void changePress(double delta) {
+        if(press - delta > 0)
+            press -= delta;
+        else {
+            System.out.println("Колесо спустило. Стоп.");
+            System.exit(0);
+        }
+    }
+    public void printPress() {
+        System.out.println("Давление: " + press);
+    }
+}
+
+
